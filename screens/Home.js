@@ -163,6 +163,7 @@ const Home = ({ navigation }) => {
       <View
         style={{
           marginTop: SIZES.padding,
+          marginLeft: 5,
         }}
       >
         <Text

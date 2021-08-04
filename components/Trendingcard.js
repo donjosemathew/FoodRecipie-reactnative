@@ -1,3 +1,4 @@
+import { BlurView } from "@react-native-community/blur";
 import React from "react";
 import {
   View,
@@ -7,7 +8,24 @@ import {
   Platform,
   StyleSheet,
 } from "react-native";
-
+const RecipieCardInfo = ({ recipeItem }) => {
+  if (Platform.OS === "ios") {
+    return (
+      <BlurView blurType="dark" style={styles.RecipieCardContainer}></BlurView>
+    );
+  } else {
+    return (
+      <View
+        style={{
+          ...styles.RecipieCardInfo,
+          backgroundColor: COLORS.transparentDarkGray,
+        }}
+      >
+        <Text>SDSD</Text>
+      </View>
+    );
+  }
+};
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 const TrendingCard = ({ containerStyle, recipeItem, onPress }) => {
   return (
@@ -47,7 +65,22 @@ const TrendingCard = ({ containerStyle, recipeItem, onPress }) => {
           {recipeItem.category}
         </Text>
       </View>
+      <RecipieCardInfo recipeItem={recipeItem} />
     </TouchableOpacity>
   );
 };
 export default TrendingCard;
+
+const styles = StyleSheet.create({
+  RecipieCardContainer: {
+    position: "absolute",
+    bottom: 10,
+    backgroundColor: "red",
+    left: 10,
+    right: 10,
+    height: 100,
+    paddingVertical: SIZES.radius,
+    paddingHorizontal: SIZES.base,
+    borderRadius: SIZES.radius,
+  },
+});
